@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1140" viewBox="0 0 900 1140">
+<defs>
+  <style>
+    text { font-family: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+  </style>
+  <linearGradient id="hdrGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#1a2a4a"/>
+    <stop offset="100%" style="stop-color:#2d4a7a"/>
+  </linearGradient>
+  <linearGradient id="resGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#f0fdf4"/>
+    <stop offset="100%" style="stop-color:#ecfdf5"/>
+  </linearGradient>
+  <clipPath id="cardClip">
+    <rect width="900" height="1140" rx="12"/>
+  </clipPath>
+</defs>
+<g clip-path="url(#cardClip)">
+  <rect width="900" height="1140" fill="white"/>
+  <rect width="900" height="120" fill="url(#hdrGrad)"/>
+  <text x="36" y="32" font-size="10" font-weight="600" fill="#a8c0e8" letter-spacing="2">EVIDENCE 01 · 협상 이력 요약</text>
+  <text x="36" y="60" font-size="20" font-weight="700" fill="white">로젠택배 파손 보상 기준 협상 및 프로세스 개선</text>
+  <text x="36" y="88" font-size="12" fill="#a8c0e8">택배 표준약관 근거 압박 → 물품 회수 조건 철폐 · 사진 증빙 대체 확정</text>
+  <text x="36" y="150" font-size="10" font-weight="700" fill="#94a3b8" letter-spacing="1.5">협상 타임라인</text>
+  <circle cx="58" cy="188" r="18" fill="#fee2e2"/>
+  <text x="58" y="193" font-size="14" font-weight="800" fill="#dc2626" text-anchor="middle">1</text>
+  <line x1="58" y1="206" x2="58" y2="378" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="90" y="184" font-size="10" font-weight="600" fill="#94a3b8">2025.09.26</text>
+  <rect x="158" y="172" width="61" height="16" rx="8" fill="#fee2e2"/>
+  <text x="188" y="183" font-size="10" font-weight="700" fill="#dc2626" text-anchor="middle">로젠 대응</text>
+  <text x="90" y="205" font-size="13.5" font-weight="700" fill="#1e293b">로젠 측 강경 대응 — 회수 없이는 보상 불가</text>
+  <text x="90" y="226" font-size="12" fill="#475569">파손 사고 접수 원칙으로 ① 물품 회수 → ② 입고 확인 → ③ 사고 접수 3단계를 고수.</text>
+  <text x="90" y="244" font-size="12" fill="#475569">고객이 박스 폐기·주말 경과 후에도 회수 없으면 보상 불가 입장 통보.</text>
+  <rect x="90" y="266" width="790" height="40" rx="4" fill="#f8fafc"/>
+  <rect x="90" y="266" width="3" height="40" fill="#e2e8f0"/>
+  <text x="100" y="280" font-size="11" fill="#64748b" font-style="italic">&quot;거래처마다 정책적인 부분을 변경하여 적용할 수 없기 때문에</text>
+  <text x="100" y="294" font-size="11" fill="#64748b" font-style="italic">회수가 진행되지 않는 경우에는 현재로써는 보상이 불가한 상황입니다.&quot;</text>
+  <circle cx="58" cy="396" r="18" fill="#dbeafe"/>
+  <text x="58" y="401" font-size="14" font-weight="800" fill="#2563eb" text-anchor="middle">2</text>
+  <line x1="58" y1="414" x2="58" y2="576" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="90" y="392" font-size="10" font-weight="600" fill="#94a3b8">2025.11.03</text>
+  <rect x="158" y="380" width="79" height="16" rx="8" fill="#dbeafe"/>
+  <text x="197" y="391" font-size="10" font-weight="700" fill="#2563eb" text-anchor="middle">초록마을 대응</text>
+  <text x="90" y="413" font-size="13.5" font-weight="700" fill="#1e293b">택배 표준약관 근거로 시스템 개선 공식 요구</text>
+  <text x="90" y="434" font-size="12" fill="#475569">9/30 이후 파손 건 사전 공유 전무 데이터 제시, 특정 영업소가 아닌 시스템적 문제로 규정.</text>
+  <text x="90" y="452" font-size="12" fill="#475569">택배 표준약관 근거로 로젠의 의무 이행 공식 요청.</text>
+  <rect x="90" y="474" width="790" height="40" rx="4" fill="#eff6ff"/>
+  <rect x="90" y="474" width="3" height="40" fill="#2563eb"/>
+  <text x="100" y="488" font-size="11" fill="#1d4ed8" font-style="italic">📋 표준약관 제9조4항 — &quot;파손 인지 시 지체 없이 송화인에게 통보 의무&quot;</text>
+  <text x="100" y="502" font-size="11" fill="#1d4ed8" font-style="italic">📋 표준약관 제18조 — 사고 발생 시의 조치 의무 명시</text>
+  <circle cx="58" cy="594" r="18" fill="#dcfce7"/>
+  <text x="58" y="599" font-size="14" font-weight="800" fill="#16a34a" text-anchor="middle">3</text>
+  <line x1="58" y1="612" x2="58" y2="771" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="90" y="590" font-size="10" font-weight="600" fill="#94a3b8">2025.11.03</text>
+  <rect x="158" y="578" width="61" height="16" rx="8" fill="#fee2e2"/>
+  <text x="188" y="589" font-size="10" font-weight="700" fill="#dc2626" text-anchor="middle">로젠 대응</text>
+  <text x="90" y="611" font-size="13.5" font-weight="700" fill="#1e293b">로젠, 약관 내용 인정 및 내부 검토 착수</text>
+  <text x="90" y="632" font-size="12" fill="#475569">약관 근거 압박에 더 이상 반박하지 못하고 자사 표준약관 명시 사항임을 공식 인정.</text>
+  <text x="90" y="650" font-size="12" fill="#475569">기존 강경 입장 사실상 철회.</text>
+  <rect x="90" y="672" width="790" height="40" rx="4" fill="#f8fafc"/>
+  <rect x="90" y="672" width="3" height="40" fill="#e2e8f0"/>
+  <text x="100" y="686" font-size="11" fill="#64748b" font-style="italic">&quot;말씀주신 부분처럼, 당사 표준약관 內 분명히 명시가 되어 있는 것으로</text>
+  <text x="100" y="700" font-size="11" fill="#64748b" font-style="italic">인지하고 있습니다. 당 사업부 내부적으로 소통 후 회신드리겠습니다.&quot;</text>
+  <circle cx="58" cy="789" r="18" fill="#ccfbf1"/>
+  <text x="58" y="794" font-size="14" font-weight="800" fill="#0d9488" text-anchor="middle">4</text>
+  <text x="90" y="785" font-size="10" font-weight="600" fill="#94a3b8">2025.11.04</text>
+  <rect x="158" y="773" width="79" height="16" rx="8" fill="#dcfce7"/>
+  <text x="197" y="784" font-size="10" font-weight="700" fill="#16a34a" text-anchor="middle">프로세스 확정</text>
+  <text x="90" y="806" font-size="13.5" font-weight="700" fill="#1e293b">로젠 주도 간소화 프로세스 선 제안 및 확정</text>
+  <text x="90" y="827" font-size="12" fill="#475569">로젠이 직접 개선안을 마련하여 제안. 물품 회수 요건 완전 철폐,</text>
+  <text x="90" y="845" font-size="12" fill="#475569">사진 증빙으로 대체하는 방식으로 확정.</text>
+  <rect x="90" y="867" width="790" height="40" rx="4" fill="#f8fafc"/>
+  <rect x="90" y="867" width="3" height="40" fill="#e2e8f0"/>
+  <text x="100" y="881" font-size="11" fill="#64748b" font-style="italic">&quot;파손 사고 건 인지 → 사고접수 진행</text>
+  <text x="100" y="895" font-size="11" fill="#64748b" font-style="italic">※ 사고물품 회수의 경우, 진행하지 않을 예정 / 파손 사진으로 대체&quot;</text>
+  <rect x="20" y="965" width="860" height="130" rx="10" fill="url(#resGrad)" stroke="#bbf7d0" stroke-width="1.5"/>
+  <circle cx="52" cy="993" r="18" fill="#16a34a"/>
+  <text x="52" y="999" font-size="16" fill="white" text-anchor="middle">✓</text>
+  <text x="80" y="983" font-size="9" font-weight="700" fill="#16a34a" letter-spacing="1">협상 결과</text>
+  <text x="80" y="1001" font-size="13.5" font-weight="700" fill="#14532d">물품 회수 조건 철폐 · 파손 사진 증빙으로 대체 확정</text>
+  <rect x="80" y="1011" width="88" height="20" rx="5" fill="#fee2e2"/>
+  <line x1="84" y1="1021" x2="164" y2="1021" stroke="#991b1b" stroke-width="1" opacity="0.6"/>
+  <text x="124" y="1026" font-size="11" font-weight="600" fill="#991b1b" text-anchor="middle">물품 회수 필수</text>
+  <text x="184" y="1026" font-size="11" font-weight="600" fill="#94a3b8" text-anchor="middle">→</text>
+  <rect x="201" y="1011" width="61" height="20" rx="5" fill="#fee2e2"/>
+  <line x1="205" y1="1021" x2="258" y2="1021" stroke="#991b1b" stroke-width="1" opacity="0.6"/>
+  <text x="231" y="1026" font-size="11" font-weight="600" fill="#991b1b" text-anchor="middle">입고 확인</text>
+  <text x="278" y="1026" font-size="11" font-weight="600" fill="#94a3b8" text-anchor="middle">→</text>
+  <rect x="295" y="1011" width="61" height="20" rx="5" fill="#fee2e2"/>
+  <line x1="299" y1="1021" x2="352" y2="1021" stroke="#991b1b" stroke-width="1" opacity="0.6"/>
+  <text x="325" y="1026" font-size="11" font-weight="600" fill="#991b1b" text-anchor="middle">사고 접수</text>
+  <text x="372" y="1026" font-size="11" font-weight="600" fill="#16a34a" text-anchor="middle">⟹</text>
+  <rect x="389" y="1011" width="61" height="20" rx="5" fill="#16a34a"/>
+  <text x="419" y="1026" font-size="11" font-weight="600" fill="white" text-anchor="middle">파손 확인</text>
+  <text x="466" y="1026" font-size="11" font-weight="600" fill="#94a3b8" text-anchor="middle">→</text>
+  <rect x="483" y="1011" width="88" height="20" rx="5" fill="#16a34a"/>
+  <text x="527" y="1026" font-size="11" font-weight="600" fill="white" text-anchor="middle">즉시 사고 접수</text>
+  <text x="80" y="1055" font-size="11" fill="#166534"><tspan font-weight="700">배경: </tspan>택배 표준약관 제9조·제18조 근거로 로젠의 계약 의무 공식화 → 정책 변경 이끌어냄.</text>
+  <text x="80" y="1073" font-size="11" fill="#166534">고객이 박스 폐기·주말 경과 후에도 보상 청구 불가했던 구조 해소.</text>
+  <rect x="0" y="1102" width="900" height="38" fill="#f8fafc"/>
+  <line x1="0" y1="1102" x2="900" y2="1102" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="28" cy="1121" r="3" fill="#94a3b8"/>
+  <text x="36" y="1126" font-size="10" fill="#94a3b8">출처: 로젠택배_초록마을 CS 운영방 카카오톡 대화 (2025.09–11)</text>
+  <circle cx="480" cy="1121" r="3" fill="#94a3b8"/>
+  <text x="488" y="1126" font-size="10" fill="#94a3b8">담당자: 오희은 (초록마을 CS운영)</text>
+</g>
+</svg>
