@@ -198,7 +198,7 @@
           <p>
             CS에서 저는 항상 두 번 생각합니다. <strong>"이 케이스를 어떻게 처리할 것인가"와 "이게 왜 반복되는가".</strong>
             VOC가 쌓일 때 처리 속도보다 반복의 원인을 먼저 찾는 이유입니다.
-            173건을 전수 분류했더니 82%가 하나의 구조 문제에서 나왔고, 그 데이터로 개발팀을 설득해 당일 구현으로 CS 문의를 0건으로 만들었습니다.
+            VOC를 전수 분류했더니 82%가 하나의 구조 문제에서 나왔고, 그 데이터로 CTO를 설득해 당일 구현으로 CS 문의를 0건으로 만들었습니다.
           </p>
           <p>
             쏘카의 CS는 예약·결제·차량 수령·반납·사고 대응까지 여정 전체에 걸쳐 있습니다.
@@ -261,23 +261,23 @@
     <div class="metrics-grid">
       <div class="m-card fi">
         <div class="m-number">0건</div>
-        <div class="m-label">CS 문의 구조적 차단</div>
-        <div class="m-sub">일 6~10건→0건<br>VOC 분석 → CX 개선 실행</div>
+        <div class="m-label">반복 문의 구조적 차단</div>
+        <div class="m-sub">일 6~10건 → 0건<br>VOC 전수 분석 → Root Cause → CTO 제안 → 당일 구현</div>
       </div>
       <div class="m-card fi">
         <div class="m-number">8→2단계</div>
-        <div class="m-label">AI 기반 CS 자동화</div>
-        <div class="m-sub">Chrome Extension 직접 구현<br>1,151건 단독 처리</div>
+        <div class="m-label">AI 기반 운영 자동화</div>
+        <div class="m-sub">비개발 직군 유일 AI 비용 공식 승인<br>귀책 기준값 자동화로 데이터 정합성 확보</div>
       </div>
       <div class="m-card fi">
-        <div class="m-number">173건</div>
-        <div class="m-label">VOC 전수 분류 · 원인 규명</div>
-        <div class="m-sub">82% 동일 구조 원인 데이터 증명<br>개발팀 협의 → CX 개선 실행</div>
+        <div class="m-number">95%+</div>
+        <div class="m-label">CS 재확인 왕복 제거</div>
+        <div class="m-sub">입력 구조 재설계 · 스펙 직접 정의<br>SW개발팀·IT팀 협의 → 구현 완료</div>
       </div>
       <div class="m-card fi">
-        <div class="m-number">월 1,900만</div>
-        <div class="m-label">3PL 정산 구조 설계</div>
-        <div class="m-sub">손실 이슈 구조화 · 범위 산정<br>CEO 보고 · 경영진 승인</div>
+        <div class="m-number">C레벨 보고</div>
+        <div class="m-label">운영 기준 직접 설계 · 전사 확정</div>
+        <div class="m-sub">배송 SLA 기준 COO 보고·확정<br>AI 리포트 CEO 승인 → 매일 운영</div>
       </div>
     </div>
   </div>
@@ -294,12 +294,46 @@
 
       <a class="c-card fi" href="case1.html">
         <div class="c-tags">
+          <span class="c-tag">VOC 분석 · Root Cause 규명</span>
+          <span class="c-tag">Fail-soft UX</span>
+          <span class="c-tag">CTO 협업</span>
+        </div>
+        <h3 class="c-title">VOC 전수 분석 → Root Cause 규명 → CTO 재제안 → 반복 문의 0건</h3>
+        <p class="c-desc">일 6~10건 반복되던 배송 오류 문의를 처리하는 대신 분석했습니다. 반년 전 거절됐던 UX 개선안을 VOC 데이터와 함께 CTO에게 재제안해 당일 구현·배포까지 이어낸 사례입니다.</p>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">일 6~10건→0건</span>
+            <span class="c-metric-lab">반복 문의 완전 해소 · 제안 당일 구현</span>
+          </div>
+          <div class="c-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </a>
+
+      <a class="c-card fi" href="case2.html">
+        <div class="c-tags">
+          <span class="c-tag">운영 자동화</span>
+          <span class="c-tag">생성형 AI 실무 활용</span>
+          <span class="c-tag">데이터 정합성</span>
+        </div>
+        <h3 class="c-title">반복 입력 자동화와 기준값 표준화 — 비개발 직군 유일 AI 비용 공식 승인</h3>
+        <p class="c-desc">귀책 기준값 오입력 문제를 구조적으로 차단하는 자동화를 설계했습니다. Chrome Extension·VBA·Apps Script로 직접 구현하고, 비개발 직군 중 유일하게 AI 도구를 업무비로 공식 승인받은 사례입니다.</p>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">8→2단계</span>
+            <span class="c-metric-lab">반복 입력 프로세스 축소 · 비개발 유일 AI 승인</span>
+          </div>
+          <div class="c-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </a>
+
+      <a class="c-card fi" href="case3.html">
+        <div class="c-tags">
           <span class="c-tag">CX 프로세스 개선</span>
           <span class="c-tag">CS 입력 구조 설계</span>
           <span class="c-tag">개발팀 협의</span>
         </div>
         <h3 class="c-title">CS 입력 구조 재설계 — 고객 의도를 데이터로 만들어 재확인 왕복 95% 제거</h3>
-        <p class="c-desc">처리 단계에서 고객에게 다시 묻는 것보다, 수집 단계에서 처음부터 제대로 받는 구조를 만드는 게 낫다고 판단했습니다. CRM 중복 필드를 재활용해 스펙을 직접 설계하고 개발팀과 협의·구현, AS 재확인 왕복을 95% 이상 없앤 사례입니다.</p>
+        <p class="c-desc">처리 단계에서 다시 묻는 것보다 수집 단계에서 제대로 받는 구조를 만드는 게 낫다고 판단했습니다. CRM 중복 필드를 재활용해 스펙을 직접 설계하고 개발팀과 협의·구현, AS 재확인 왕복을 95% 이상 없앤 사례입니다.</p>
         <div class="c-bottom">
           <div class="c-metric">
             <span class="c-metric-val">95%+</span>
@@ -309,52 +343,18 @@
         </div>
       </a>
 
-      <a class="c-card fi" href="case2.html">
-        <div class="c-tags">
-          <span class="c-tag">CS 운영 기획</span>
-          <span class="c-tag">기준 설계</span>
-          <span class="c-tag">운영 체계 수립</span>
-        </div>
-        <h3 class="c-title">CS 운영 체계 수립 — 기준이 없던 곳에 직접 설계하다</h3>
-        <p class="c-desc">CS 판단 기준, SLA 처리 기준, 에스컬레이션 가이드라인이 전무하던 환경에서 데이터와 계약 분석을 기반으로 운영 기준을 직접 수립했습니다. 3PL 손실 이슈를 구조화해 CEO/COO 직접 보고하고, 월 1,900만 정산 구조를 설계한 사례입니다.</p>
-        <div class="c-bottom">
-          <div class="c-metric">
-            <span class="c-metric-val">월 1,900만</span>
-            <span class="c-metric-lab">데이터 기반 정산 구조 설계 · CEO 승인</span>
-          </div>
-          <div class="c-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </a>
-
-      <a class="c-card fi" href="case3.html">
-        <div class="c-tags">
-          <span class="c-tag">생성형 AI 활용</span>
-          <span class="c-tag">CS 자동화</span>
-          <span class="c-tag">운영 효율화</span>
-        </div>
-        <h3 class="c-title">생성형 AI 활용 CS 자동화 — 8단계 프로세스를 2단계로</h3>
-        <p class="c-desc">Claude로 Chrome Extension을 직접 구현해 CS 반복 프로세스를 8단계에서 2단계로 축소했습니다. 비개발 직군 유일하게 AI 도입 비용을 업무비로 공식 승인받았고, VOC 분류·계약 분석·보고 자동화를 실무에 적용한 사례입니다.</p>
-        <div class="c-bottom">
-          <div class="c-metric">
-            <span class="c-metric-val">8→2단계</span>
-            <span class="c-metric-lab">CS 자동화 · 1,151건 단독 처리</span>
-          </div>
-          <div class="c-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </a>
-
       <a class="c-card fi" href="case4.html">
         <div class="c-tags">
-          <span class="c-tag">VOC 데이터 분석</span>
-          <span class="c-tag">CX 개선 실행</span>
-          <span class="c-tag">개발팀 협업</span>
+          <span class="c-tag">운영 정책 설계</span>
+          <span class="c-tag">C레벨 협의</span>
+          <span class="c-tag">리스크 관리</span>
         </div>
-        <h3 class="c-title">VOC 전수 분류 → CX 구조 문제 발굴 및 개선 실행</h3>
-        <p class="c-desc">프로모션 오인 VOC 173건을 전수 분류해 82%의 동일 구조적 원인을 데이터로 규명했습니다. 원인 규명에서 그치지 않고 개발팀과 협의해 CX 개선으로 실행하고, 반복 CS 문의를 일 6~10건에서 0건으로 구조적으로 차단했습니다.</p>
+        <h3 class="c-title">운영 기준 직접 설계 · COO·CEO 보고 후 전사 확정</h3>
+        <p class="c-desc">출고 지연 1,000건+ 위기에서 배송 SLA 기준을 직접 설계해 COO 보고·전사 확정하고, AI 기반 일일 자금집행 리포트를 요청 없이 먼저 구축해 CEO 승인 후 정식 운영에 들어간 두 가지 사례입니다.</p>
         <div class="c-bottom">
           <div class="c-metric">
-            <span class="c-metric-val">일 6~10건→0건</span>
-            <span class="c-metric-lab">VOC 분석 → CS 문의 구조적 차단</span>
+            <span class="c-metric-val">COO·CEO 승인</span>
+            <span class="c-metric-lab">운영 기준 전사 확정 · AI 리포트 매일 운영</span>
           </div>
           <div class="c-arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
@@ -385,10 +385,10 @@
         </div>
         <div class="jd-right">
           <div class="jd-match-label">나의 경험</div>
-          <div class="jd-match-title">기준 없는 환경에서 CS 체계 수립 + 수집 구조 재설계로 재확인 왕복 95% 제거</div>
+          <div class="jd-match-title">CS 운영 기준 직접 설계 + 재확인 왕복 95% 제거 + SLA 기준 COO 보고·전사 확정</div>
           <div class="jd-match-points">
-            <div class="jd-match-point">CS 판단 가이드, SLA 처리 기준이 없던 자리에 데이터 기반으로 직접 설계 후 경영진 보고·확정</div>
-            <div class="jd-match-point">CS 입력 구조 재설계 — 고객 의도를 수집 단계에서 구조화해 AS 재확인 왕복 95%+ 제거, 처리 리드타임 단축</div>
+            <div class="jd-match-point">출고 지연 1,000건+ 위기에서 배송 SLA 처리 기준 직접 설계 → COO 직접 보고·승인 → 전사 기준 확정 (Case 4)</div>
+            <div class="jd-match-point">CS 입력 구조 재설계 — 고객 의도를 수집 단계에서 구조화해 AS 재확인 왕복 95%+ 제거, 처리 리드타임 단축 (Case 3)</div>
             <div class="jd-match-point">이커머스 CS 전 흐름(취소·반품·재배송·환불·교환) 운영 프로세스 설계·운영·개선 전반 담당</div>
           </div>
         </div>
@@ -427,11 +427,11 @@
         </div>
         <div class="jd-right">
           <div class="jd-match-label">나의 경험</div>
-          <div class="jd-match-title">173건 전수 분류 → 82% 원인 규명 → 개발팀 협의 → 개선 실행</div>
+          <div class="jd-match-title">VOC 전수 분류 → Root Cause 규명 → CTO 재제안 → 일 6~10건 → 0건</div>
           <div class="jd-match-points">
-            <div class="jd-match-point">프로모션 오인 VOC 173건 전수 분류, 82%가 동일 구조 원인임을 데이터로 증명</div>
-            <div class="jd-match-point">VOC 패턴 분석으로 UX 구조 문제 재정의 → 개발팀 제안·협의 → CS 문의 일 6~10건→0건</div>
-            <div class="jd-match-point">CS 입력 구조 재설계로 AS 재확인 왕복 95%+ 제거 — 데이터 수집 단계부터 품질 설계</div>
+            <div class="jd-match-point">배송 오류 VOC 전수 분류 → 82% 동일 구조 원인 데이터 증명 → 반년 전 거절됐던 개선안 재제안 (Case 1)</div>
+            <div class="jd-match-point">VOC 패턴 분석으로 서비스 구조 문제 재정의 → CTO 협업 → 당일 구현·배포 → CS 문의 완전 해소</div>
+            <div class="jd-match-point">CS 입력 구조 재설계로 AS 재확인 왕복 95%+ 제거 — 데이터 수집 단계부터 품질 설계 (Case 3)</div>
           </div>
         </div>
       </div>
@@ -448,11 +448,11 @@
         </div>
         <div class="jd-right">
           <div class="jd-match-label">나의 경험</div>
-          <div class="jd-match-title">Claude로 CS 자동화 직접 구현 + 조직 AI 도입 공식 승인</div>
+          <div class="jd-match-title">비개발 직군 유일 AI 비용 공식 승인 + 자금집행 리포트 자동화 CEO 승인</div>
           <div class="jd-match-points">
-            <div class="jd-match-point">Claude 활용 Chrome Extension 직접 구현 → CS 8단계→2단계, 1,151건 단독 처리</div>
-            <div class="jd-match-point">AI 도입 필요성 직접 제안 → 비개발 직군 유일 AI 업무비 공식 승인·운용</div>
-            <div class="jd-match-point">VOC 자동 분류, 계약서 분석, 경영진 리포트 자동화에 LLM 실무 적용</div>
+            <div class="jd-match-point">Chrome Extension·VBA·Apps Script 직접 구현 → CS 8단계→2단계, 귀책 기준값 자동화로 데이터 정합성 확보 (Case 2)</div>
+            <div class="jd-match-point">AI 도입 기여도 인정 → 비개발 직군 유일 AI 업무비 공식 승인·운용</div>
+            <div class="jd-match-point">AI 기반 일일 자금집행 리포트 구축 → CEO 승인 → 매일 08:30 경영진 자동 발송 정식 운영 (Case 4)</div>
           </div>
         </div>
       </div>
@@ -524,8 +524,12 @@
   window.addEventListener('scroll', () => { hd.classList.toggle('on', window.scrollY > 8); }, { passive: true });
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+  }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+  document.querySelectorAll('.fi').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) { el.classList.add('show'); }
+    else { io.observe(el); }
+  });
   const navToggle = document.getElementById('navToggle');
   const navEl = document.getElementById('nav');
   navToggle.addEventListener('click', () => { navToggle.classList.toggle('open'); navEl.classList.toggle('open'); });
