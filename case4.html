@@ -19,7 +19,7 @@
     body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-1); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.7; }
     .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
     .hr { width: 100%; height: 1px; background: var(--border); }
-    header { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color var(--t) var(--ease); }
+    header { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,0.88); backdrop-filter: blur(16px); -webkit-backdro0-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color var(--t) var(--ease); }
     header.on { border-bottom-color: var(--border); }
     .h-inner { max-width: 980px; margin: 0 auto; padding: 0 28px; height: 62px; display: flex; align-items: center; justify-content: space-between; }
     .logo { font-size: 16px; font-weight: 800; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
@@ -55,8 +55,17 @@
     .evidence-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
     .evidence-item { display: flex; flex-direction: column; gap: 12px; }
     .evidence-label { font-size: 13px; font-weight: 700; color: var(--text-1); }
-    .evidence-image { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+    .evidence-image { position: relative; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; display: flex; align-items: center; justify-content: center; max-width: 680px; }
     .evidence-image img { width: 100%; height: auto; display: block; }
+    .evidence-image.zoomable { cursor: zoom-in; }
+    .evidence-image.zoomable img { transition: opacity 0.2s; }
+    .evidence-image.zoomable:hover img { opacity: 0.88; }
+    .zoom-hint { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.55); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 9px; border-radius: 100px; letter-spacing: 0.03em; pointer-events: none; z-index: 1; }
+    .lb-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.22s; cursor: zoom-out; }
+    .lb-overlay.open { opacity: 1; pointer-events: auto; }
+    .lb-overlay img { max-width: min(92vw, 1300px); max-height: 92vh; width: auto; height: auto; border-radius: 10px; display: block; box-shadow: 0 12px 80px rgba(0,0,0,0.6); cursor: default; }
+    .lb-close { position: fixed; top: 20px; right: 28px; color: rgba(255,255,255,0.75); font-size: 32px; cursor: pointer; line-height: 1; background: none; border: none; font-weight: 300; transition: color 0.15s; }
+    .lb-close:hover { color: #fff; }
     .evidence-desc { font-size: 13px; color: var(--text-2); line-height: 1.8; }
     .insight-list { display: flex; flex-direction: column; gap: 16px; }
     .insight-item { display: flex; gap: 16px; padding: 22px 24px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); align-items: flex-start; }
@@ -103,174 +112,73 @@
 <!-- HERO -->
 <div class="wrap">
   <section class="case-hero">
-    <a href="index.html" class="case-hero-nav">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      전체 케이스로 돌아가기
-    </a>
-    <h1 class="case-hero-title">운영 기준 직접 설계 · COO·CEO 보고 후 전사 확정</h1>
-    <div class="case-hero-summary">
-      판단 기준이 없는 위기 상황에서, <strong>기준을 직접 만들고 C레벨에 보고해 전사 기준으로 확정</strong>한 두 가지 사례입니다.<br>
-      두 경우 모두 지시가 없었습니다. 문제를 먼저 발견하고, 기준을 직접 설계하고, 데이터로 설득해 <strong>COO·CEO 승인</strong>을 받아 조직 전체 기준으로 만들었습니다.
-    </div>
-    <div class="case-hero-meta">
-      <span class="meta-chip">운영 정책 설계</span>
-      <span class="meta-chip">C레벨 협의 · 보고</span>
-      <span class="meta-chip">선제적 제안</span>
-      <span class="meta-chip">리스크 관리</span>
-      <span class="meta-chip">초록마을 · 2024–재직 중</span>
-    </div>
-  </section>
-</div>
-
-<div class="wrap"><div class="hr"></div></div>
-
-<!-- CASE A -->
-<section class="sec">
-  <div class="wrap">
-    <p class="sec-eyebrow">사례 A — COO 직접 보고</p>
-    <h2 class="sec-title">출고 지연 1,000건+ 위기에서 배송 SLA 기준 직접 설계</h2>
-    <div class="case-block fi">
-      <div class="case-block-label">상황</div>
-      <div class="case-block-title">기준이 없던 자리에서, 팀 전체가 케이스마다 다르게 대응하고 있었습니다</div>
-      <div class="case-block-body">
-        <p>물류 불안정으로 출고 지연 1,000건 이상이 동시에 발생했습니다. 재배송·취소·대기 케이스에 대한 판단 기준이 없어 팀 전체가 케이스마다 다르게 대응하고 있었습니다. 일관된 처리가 불가능한 상황이었고, 고객 민원도 빠르게 쌓였습니다.</p>
-      </div>
-    </div>
-    <div class="case-block fi">
-      <div class="case-block-label">실행</div>
-      <div class="case-block-title">SLA 처리 기준 직접 설계 → COO 보고 → 전사 기준 확정</div>
-      <div class="case-block-body">
-        <p>도착 희망일별 배송 SLA 처리 기준을 재배송·취소·대기 케이스로 나눠 <strong>직접 설계</strong>했습니다. COO에게 직접 보고해 승인을 받은 후, 팀 전체 기준으로 확정 공유했습니다.</p>
-        <p>기준이 없던 위기 상황에서 팀 전체가 동일한 기준으로 움직일 수 있는 구조를 만들었습니다. 이후 유사 상황에서 반복 적용할 수 있는 SOP로 정착됐습니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap"><div class="hr"></div></div>
-
-<!-- CASE B -->
-<section class="sec sec-alt">
-  <div class="wrap">
-    <p class="sec-eyebrow">사례 B — CEO 선제적 제안 및 승인</p>
-    <h2 class="sec-title">AI 기반 일일 자금집행 리포트 — 먼저 발견해 구축하고 제안</h2>
-    <div class="case-block fi">
-      <div class="case-block-label">상황</div>
-      <div class="case-block-title">정보가 없어서가 아니라, 정리되지 않아서 판단이 느려지고 있었습니다</div>
-      <div class="case-block-body">
-        <p>재무팀 공백 상황에서 경영진이 매일 수백 건의 자금집행 시트를 직접 스크롤해 당일 처리 건을 찾아 판단하던 구조를 발견했습니다. 정보가 없어서가 아니라, 정리되지 않아서 판단이 느려지고 있는 문제였습니다.</p>
-      </div>
-    </div>
-    <div class="case-block fi">
-      <div class="case-block-label">실행</div>
-      <div class="case-block-title">요청 없이 먼저 구축 → CEO 제안 → 매일 08:30 경영진 자동 발송</div>
-      <div class="case-block-body">
-        <p>Google Sheets에서 당일 집행 예정 건을 자동 추출하고, Claude가 필수·일반으로 분류해 Slack으로 발송하는 시스템을 <strong>요청 없이 먼저 구축</strong>했습니다. 샘플과 함께 CEO에게 제안해 승인을 받았고, 이후 <strong>매일 아침 8시 30분 전후 경영진에게 자동 발송</strong>되는 구조로 정식 운영에 들어갔습니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap"><div class="hr"></div></div>
-
-<!-- OUTCOME -->
-<section class="sec">
-  <div class="wrap">
-    <p class="sec-eyebrow">Outcome</p>
-    <h2 class="sec-title">지시 없이 먼저 발견하고, 데이터로 설득해 C레벨 승인으로 이어냈습니다</h2>
-    <div class="outcome-list">
-      <div class="outcome-item fi"><strong>COO 보고 → 전사 확정</strong> — 배송 SLA 처리 기준, 1,000건+ 위기 상황 전사 기준 수립</div>
-      <div class="outcome-item fi"><strong>CEO 승인 → 정식 운영</strong> — 요청 없이 먼저 구축한 일일 자금집행 리포트 자동화</div>
-      <div class="outcome-item fi"><strong>매일 08:30 자동 발송</strong> — 경영진 판단 리드타임 단축, 재무 공백 상황 리스크 완화</div>
-      <div class="outcome-item fi"><strong>SOP 정착</strong> — 위기 대응 기준이 반복 적용 가능한 운영 기준으로 전환</div>
-    </div>
-    <div class="metric-grid fi">
-      <div class="metric-box">
-        <div class="metric-label">사례 A</div>
-        <div class="metric-value">COO 보고 → 전사 확정</div>
-        <div class="metric-sub">배송 SLA 기준 수립 (출고 지연 1,000건+ 위기)</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-label">사례 B</div>
-        <div class="metric-value">CEO 승인 → 매일 운영</div>
-        <div class="metric-sub">AI 일일 자금집행 리포트 정식 운영</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap"><div class="hr"></div></div>
-
-<!-- EVIDENCE -->
-<section class="sec sec-alt">
-  <div class="wrap">
-    <p class="sec-eyebrow">Evidence</p>
-    <h2 class="sec-title">실제 결과물</h2>
-    <div class="evidence-grid fi">
-      <div class="evidence-item">
-        <div class="evidence-label">AI 기반 일일 자금집행 리포트 — CEO·COO 슬랙 발송 화면</div>
-        <div class="evidence-image"><img src="img/case4_ev1.png" alt="CEO·COO에게 자동 발송된 일일 자금집행 리포트 슬랙 메시지"></div>
-        <div class="evidence-desc">매일 오전 8시 30분 전후, 당일 자금집행 건수·금액을 필수/일반으로 분류해 CEO·COO 채널에 자동 발송됩니다. Google Sheets에서 당일 집행 예정 건을 자동 추출해 Claude로 분류한 결과물로, 요청 없이 먼저 구축해 CEO 승인 후 정식 운영에 들어간 리포트입니다.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap"><div class="hr"></div></div>
-
-<!-- INSIGHT -->
-<section class="sec">
-  <div class="wrap">
-    <p class="sec-eyebrow">Insight</p>
-    <h2 class="sec-title">이 경험에서 얻은 것</h2>
-    <div class="insight-list">
-      <div class="insight-item fi">
-        <div class="insight-num">1</div>
-        <div class="insight-body"><strong>기준이 없는 위기 상황에서, 기준을 만드는 것이 운영기획의 역할입니다.</strong> 지시를 기다리지 않고 먼저 설계했을 때, 팀 전체가 일관되게 움직일 수 있었습니다. 쏘카의 사고 대응·배송 이슈·고객 보상 기준에서도 같은 원리가 작동합니다 — SLA가 없으면 만드는 것이 먼저입니다.</div>
-      </div>
-      <div class="insight-item fi">
-        <div class="insight-num">2</div>
-        <div class="insight-body"><strong>경영진 보고는 승인을 구하는 것이 아니라, 판단에 필요한 구조를 제공하는 것입니다.</strong> 숫자와 기준을 먼저 설계해서 가져갔을 때, COO·CEO가 빠르게 판단하고 승인할 수 있었습니다. 보고의 목적은 결재가 아니라 경영진이 올바른 판단을 내릴 수 있도록 돕는 것입니다.</div>
-      </div>
-      <div class="insight-item fi">
-        <div class="insight-num">3</div>
-        <div class="insight-body"><strong>문제를 먼저 발견해 먼저 구축하는 것이 제안의 가장 강력한 형태입니다.</strong> "이런 게 있으면 어떨까요?"보다 "이미 만들었습니다. 써보시겠어요?"가 훨씬 설득력이 높았습니다. 쏘카의 CX 개선·운영 자동화에서도 이 방식이 그대로 적용됩니다.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NAV -->
-<div class="wrap">
-  <div class="nav-cases">
-    <a href="case3.html" class="nav-case-link">
-      <span class="nav-case-dir">← 이전 케이스</span>
-      <span class="nav-case-title">CS 입력 구조 재설계 — 재확인 왕복 95%+ 제거</span>
-    </a>
-    <div></div>
-  </div>
-</div>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-name">오희은</div>
-      <a href="mailto:gldms1009@naver.com" class="btn btn-dark">이메일 보내기</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  const hd = document.getElementById('hd');
-  window.addEventListener('scroll', () => { hd.classList.toggle('on', window.scrollY > 8); }, { passive: true });
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
-  }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
-  document.querySelectorAll('.fi').forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight) { el.classList.add('show'); }
-    else { io.observe(el); }
-  });
-</script>
-</body>
-</html>
+    <a hs	��􉥹��๡ѵ��������􉍅͔���ɼ���؈�(��������ٜ�ݥ�Ѡ��؈���������؈�٥��	��������؀�؈�����􉹽�������Ѡ���4�����0؀�0���Ј���ɽ�����ɕ��
+���Ȉ���ɽ���ݥ�Ѡ�ĸ؈���ɽ�����������ɽչ�����ɽ������������ɽչ������ٜ�(����������Ѓ���vӲ*���p��>3�V�����(������(�����ā�����􉍅͔���ɼ�ѥѱ����jӲb���ò� �����D������
+܁
+=?
+�
+<���Ӫ΀��n����
+���fW��T���(�����؁�����􉍅͔���ɼ��յ�����(�������2C�.����ò��vЃ�^�*P��r������f��^C�p�����ɽ�����ò��v�����D���3�N��΀���#�ʣ�^@���Ӫ΃�VЃ���
+����ò��r�p��fW��T���ɽ����Vp��F@����� ��
+����z�.#�.�����(�������F@�����j������F@����.s�� ��^�^#�*׮.#�.�����㲂s������� ���s�ʳ�Vc�΀����ò��v�����D������Vc�΀���6òvӶî�p����Nw�VЀ���ɽ���
+=?
+�
+<��*�v����ɽ����v���o�V���ò������Ѓ��ò��r�p���3�N��^#�*׮.#�.��(����𽑥��(�����؁�����􉍅͔���ɼ���ф��(�����������������􉵕ф��������jӲb���W�������������(�����������������􉵕ф���������#�ʠ��bG�v`�
+܃��Ӫ΀������(�����������������􉵕ф�����������s�����s�V ������(�����������������􉵕ф�����������*���������������(�����������������􉵕ф���������#��w��#�v�
+܀���ӊO�z������D������(����𽑥��(���͕�ѥ���(𽑥��((�؁�������Ʌ����؁������Ȉ�𽑥��𽑥��((�����
+M�����(�͕�ѥ���������͕���(���؁�������Ʌ���(�������������͕���啉ɽ܈��
+��� ���P�
+=<�����D���Ӫ΀���(�����ȁ������͕��ѥѱ�����s�΀����^��İ��ê�Ь��r��ò^C�p���ò��M1���ò� �����D��������(�����؁�����􉍅͔�����������(�������؁�����􉍅͔����������������f�𽑥��(�������؁�����􉍅͔�������ѥѱ�����ò��vЃ�^�6`��zC����^C�p���2 �����Ӫ� ����vӲ*���#�.���.���Ӫ�0��2�vG�Vc�΀��z#�^#�*׮.#�.�𽑥��(�������؁�����􉍅͔������������(��������������`���#�V#��W�r�p���s�΀����^��İ��ê�Ѓ�vӲ�vЃ�>g�.s�^@���s�w�Z#�*׮.#�.����z���ò�
+߲ޣ�3
+߮2�������vӲ*��^@��2�Vp��2C�.����ò��vЃ�^�ZЃ�2 �����Ӫ� ����vӲ*���#�.���.���Ӫ�0��2�vG�Vc�΀��z#�^#�*׮.#�.����v���Bp���c����� ���#���*��Vp���f��vӲ^#�΀���΃��t����nC�>��惮�Ӫ�0��2O�b�*׮.#�.�����(������𽑥��(����𽑥��(�����؁�����􉍅͔�����������(�������؁�����􉍅͔���������������.��Z$𽑥��(�������؁�����􉍅͔�������ѥѱ���M1���c������ò� �����D�������H�
+=<���Ӫ΀��H����
+����ò� ��fW��T𽑥��(�������؁�����􉍅͔������������(������������>�¤��v���w�v�����ò��M1���c������ò��v��z���ò�
+߲ޣ�3
+߮2�������vӲ*���p��
+c�"�����ɽ�������D��������ɽ����Z#�*׮.#�.���
+=?�^C��0�����D���Ӫ΃�VЃ�*�v�v���o�v ��n���2 �����Ѓ��ò��r�p��fW��T���ײr��Z#�*׮.#�.�����(�������������ò��vЃ�^�6`��r������f��^C�p��2 �����Ӫ� ��>g�v�Vp���ò��r�p��n���v���"`��z#�*P��ֳ��î�����3�N��^#�*׮.#�.����vӶn��r��
+����f��^C�p���c��ԃ���j��V���"`��z#�*P�M=C��p���W�§�BC�*׮.#�.�����(������𽑥��(����𽑥��(��𽑥��(�͕�ѥ���((�؁�������Ʌ����؁������Ȉ�𽑥��𽑥��((�����
+M�����(�͕�ѥ���������͕��͕����Ј�(���؁�������Ʌ���(�������������͕���啉ɽ܈��
+��� ���P�
+<�����s�����s�V ���<��*�v����(�����ȁ������͕��ѥѱ���$���î�`��v�v���zC��#��G�Z$�����>��*���P���� ���s�ʳ�VЃ�ֳ��W�Vc�΀���s�V ���(�����؁�����􉍅͔�����������(�������؁�����􉍅͔����������������f�𽑥��(�������؁�����􉍅͔�������ѥѱ�����W��Ӫ� ��^�ZӲs�� ��V�.#�v𰃲�W����Bc�� ��V+�V�p��2C�.��vЃ�*C������΀��z#�^#�*׮.#�.�𽑥��(�������؁�����􉍅͔������������(������������z���Ӷ2 ���׮�ă��f��^C�p�����b���vЃ����v���"c��ă��Ӳv`��zC��#��G�Z$��.s�*㮖������D��*�������VЃ�.�v����c������Ӳv�����V��2C�.��Vc�6`��ֳ��î�����s�ʳ�Z#�*׮.#�.�����W��Ӫ� ��^�ZӲs�� ��V�.#�v𰃲�W����Bc�� ��V+�V�p��2C�.��vЃ�*C������΀��z#�*P���㲂s�b�*׮.#�.�����(������𽑥��(����𽑥��(�����؁�����􉍅͔�����������(�������؁�����􉍅͔���������������.��Z$𽑥��(�������؁�����􉍅͔�������ѥѱ����jS�ʴ��^�vЃ��� ��ֳ��T��H�
+<���s�V ��H�����v������������b����zC�>d���s��𽑥��(�������؁�����􉍅͔������������(�����������������M����ϲ^C�p��.�v����G�Z$��b#��T���Ӳv��zC�>d���S��s�Vc�΀��
+��Ց��� ��V�"c
+߲v��c�r�p�����c�VЁM�����r�p���s���Vc�*P��.s�*��s�v����ɽ����jS�ʴ��^�vЃ��� ��ֳ��T���ɽ����Z#�*׮.#�.����c�R3�����V���`�
+?�^C��0���s�V#�VЃ�*�v�v���o�Vc�΀���vӶn����ɽ�������v���V�栀�.p��î�����n�����b���^C��0��zC�>d���s�����ɽ����Bc�*P��ֳ��î�p���W�.t��jӲb�^@��N��ZӪ�S�*׮.#�.�����(������𽑥��(����𽑥��(��𽑥��(�͕�ѥ���((�؁�������Ʌ����؁������Ȉ�𽑥��𽑥��((�����=UQ
+=5����(�͕�ѥ���������͕���(���؁�������Ʌ���(�������������͕���啉ɽ܈�=�э������(�����ȁ������͕��ѥѱ������.p��^�vЃ��� ���s�ʳ�Vc�΀���6òvӶî�p����Nw�VЁ��#�ʠ��*�v�r�p��vӲZӮ#�*׮.#�.����(�����؁�������э�������Ј�(�������؁�������э�����ѕ���������ɽ���
+=<���Ӫ΀��H����
+���fW��T���ɽ�����P���ò��M1���c������ò� ��İ��ê�Ь��r������f�����
+����ò� ��"c���𽑥��(�������؁�������э�����ѕ���������ɽ���
+<��*�v���H���W�.t��jӲb���ɽ�����P��jS�ʴ��^�vЃ��� ��ֳ��W�Vp��v�v���zC��#��G�Z$�����>��*���zC�>g�fP𽑥��(�������؁�������э�����ѕ���������ɽ�������v���������zC�>d���s�����ɽ�����P�����b����2C�.������Ns��z��.���T���z���Ѓ��׮�ă��f������*�����f�fP𽑥��(�������؁�������э�����ѕ���������ɽ���M=@���W�¤���ɽ�����P��r�����2�vD���ò��vЃ��c��ԃ���j�����*��Vp��jӲb���ò��r�p����f`𽑥��(����𽑥��(�����؁�����􉵕�ɥ���ɥ������(�������؁�����􉵕�ɥ�������(���������؁�����􉵕�ɥ����������
+��� �𽑥��(���������؁�����􉵕�ɥ��م�Ք��
+=<���Ӫ΀��H����
+���fW��T𽑥��(���������؁�����􉵕�ɥ���Ո����ò��M1���ò� ��"c��􀣲�s�΀����^��İ��ê�Ь��r����𽑥��(������𽑥��(�������؁�����􉵕�ɥ�������(���������؁�����􉵕�ɥ����������
+��� �𽑥��(���������؁�����􉵕�ɥ��م�Ք��
+<��*�v���H�����v���jӲb𽑥��(���������؁�����􉵕�ɥ���Ո��$��v�v���zC��#��G�Z$�����>��*����W�.t��jӲb𽑥��(������𽑥��(����𽑥��(��𽑥��(�͕�ѥ���((�؁�������Ʌ����؁������Ȉ�𽑥��𽑥��((�����Y%9
+����(�͕�ѥ���������͕��͕����Ј�(���؁�������Ʌ���(�������������͕���啉ɽ܈�٥��������(�����ȁ������͕��ѥѱ����.���p���ê������(�����؁������٥�������ɥ������(�������؁������٥�������ѕ���(���������؁������٥�������������$���î�`��v�v���zC��#��G�Z$�����>��*���P�
+?
+�
+=<��*��zd���s����fS���𽑥��(���������؁������٥�������������񥵜��Ɍ􉥵����͔�}��Ĺ���������
+?
+�
+=?�^C��0��zC�>d���s���Bp��v�v���zC��#��G�Z$�����>��*���*��zd���S�.s�� ��𽑥��(���������؁������٥��������͌������v���b�����.p��î�����n���.�v���zC��#��G�Z$���Ӳ"c
+ߪ�#�V��v��V�"`��v��c�r�p�����c�VЁ
+?
+�
+=<����C�^@��zC�>d���s���B��.#�.���������M����ϲ^C�p��.�v����G�Z$��b#��T���Ӳv��zC�>d���S��s�VЁ
+��Ց���p�����c�Vp���ê���p���jS�ʴ��^�vЃ��� ��ֳ��W�VЁ
+<��*�v���n���W�.t��jӲb�^@��N��ZӪ������>��*�z�.#�.��𽑥��(������𽑥��(����𽑥��(��𽑥��(�͕�ѥ���((�؁�������Ʌ����؁������Ȉ�𽑥��𽑥��((�����%9M%!P����(�͕�ѥ���������͕���(���؁�������Ʌ���(�������������͕���啉ɽ܈�%�ͥ������(�����ȁ������͕��ѥѱ����vЃ����^c�^C�p��Z�v ������(�����؁�����􉥹ͥ��е���Ј�(�������؁�����􉥹ͥ��е�ѕ������(���������؁�����􉥹ͥ��е�մ���𽑥��(���������؁�����􉥹ͥ��е��������ɽ�����ò��vЃ�^�*P��r������f��^C�p����ò��v���3�Ns�*P����vЃ�jӲb��öj7�v`��^��V��z�.#�.�����ɽ�������.s������î.������ ��V+�΀���� ������Z#�v��V0���2 �����Ӫ� ��v���Bc��0��n���v���"`��z#�^#�*׮.#�.����>c��Ӳv`��
+��΀��2�vG
+߮�ò���vӲ*#
+ߪ΃��t���Ӳ���ò��^C�s�>���g�v ��nC����� ��zG�>g�V��.#�.���P�M1�� ��^�r�Ѓ��3�Ns�*P����vЃ����z�.#�.��𽑥��(������𽑥��(�������؁�����􉥹ͥ��е�ѕ������(���������؁�����􉥹ͥ��е�մ���𽑥��(���������؁�����􉥹ͥ��е��������ɽ�������b�����Ӫ΃�*P��*�v�v��ֳ�Vc�*P����vЃ�V�.#�v𰃶2C�.��^@��V�jS�Vp��ֳ��î�����s��׶Vc�*P����z�.#�.�����ɽ�����"��zC�f ���ò��v���� ������VӲp�������S�v��V0��
+=?
+�
+?�� ��惮�Ӫ�0��2C�.��Vc�΀��*�v�V���"`��z#�^#�*׮.#�.�����Ӫ΃�v`�������v ���òz��� ��V�.#�v������b���vЃ�b���S�����2C�.��v��
+Ӯ�Ѓ�"`��z#�>��t��>W�*P����z�.#�.��𽑥��(������𽑥��(�������؁�����􉥹ͥ��е�ѕ������(���������؁�����􉥹ͥ��е�մ���𽑥��(���������؁�����􉥹ͥ��е��������ɽ�����㲂s������� ���s�ʳ�VЃ��� ��ֳ��W�Vc�*P����vЃ��s�V#�v`����z����W����Vp��bW�s�z�.#�.�����ɽ������vӮ~����0��z#�r�Ѓ�ZӮZ���3�jP����Ӯ.����vӮ�����3�N��^#�*׮.#�.����6���Ӳ.s�ʃ�ZӲjP���� ��n��R�����Nw����vЃ�K�Vc�*׮.#�.����>c��Ӳv`�
+`���s��
+߲jӲb��zC�>g�fS�^C�s�>��vЃ�§�.w�vЃ���2��p����j��B��.#�.��𽑥��(������𽑥��(����𽑥��(��𽑥��(�͕�ѥ���((�����9X����(�؁�������Ʌ���(���؁�����􉹅ص��͕̈�(����񄁡ɕ�􉍅͔̹�ѵ��������􉹅ص��͔�������(�����������������􉹅ص��͔���Ȉ��@��vӲ�����vӲ*�������(�����������������􉹅ص��͔�ѥѱ���
+L��z�����ֳ�����z�������P��z��fW�v���fW��Ԁ�Ԕ����s���������(������(�������𽑥��(��𽑥��(𽑥��((񙽽ѕ��(���؁�������Ʌ���(�����؁�����􉙽�ѕȵ����Ȉ�(�������؁�����􉙽�ѕȵ�������b��v��v 𽑥��(������񄁡ɕ�􉵅��Ѽ靱���������ٕȹ�����������Ѹ��Ѹ���ɬ���vӮ�S�v����Ӯ
+Ӫ����(����𽑥��(��𽑥��(𽙽�ѕ��((�؁�����􉱈��ٕɱ�䈁��􉱈��ɽ��􉑥�������ɥ����������Ք���ɥ��������vӮ�㲞 ��fW�2 ��(�����ѽ�������􉱈����͔����􉱈����͔���ɥ��������.�������ѥ�������ѽ��(��񥵜���􉱈�������Ɍ􈈁�����(𽑥��((�͍ɥ���(������Ё���􁑽�յ��й���������	�%��������(��ݥ���ܹ���ٕ��1��ѕ��Ƞ�͍ɽ�����������쁡�������1��йѽ�����������ݥ���ܹ͍ɽ��d������������ͥٔ���Ք����(������Ё���􁹕܁%�ѕ�͕�ѥ��=�͕�ٕȠ����ɥ�̤�����(�������ɥ�̹������������쁥�������%�ѕ�͕�ѥ����쁔�хɝ�й�����1��й�����͡�ܜ�쁥��չ��͕�ٔ���хɝ�Ф�����(������ѡɕ͡�������ɽ��5�ɝ��耜��������������������(�����յ��й�Օ��M����ѽ�������������������������(��������Ёɕ�Ѐ􁕰����	�չ����
+�����I��Р��(��������ɕ�йѽ����ݥ���ܹ�����!����Ф�쁕�������1��й�����͡�ܜ���(������͔�쁥����͕�ٔ������(�����(������Ё���􁑽�յ��й���������	�%��������(������Ё��%���􁑽�յ��й���������	�%������������(�����յ��й�Օ��M����ѽ�������٥���������������������������������(��������Ё�Ʌ��􁥵�����͕�Р���٥��������������(�����Ʌ�������1��й�����齽��������(��������Ё���Ѐ􁑽�յ��й�ɕ�ѕ�����Р��������(�������й�����9�����齽�����М�(�������йѕ��
+��ѕ�Ѐ􀟶fW�2 ��(�����Ʌ��������
+��������Ф�(�����Ʌ�����ٕ��1��ѕ��Ƞ���������������쁱�%����Ɍ�􁥵���Ɍ쁱�%�����Ѐ􁥵�����쁱�������1��й�����������쁑��յ��й������屔��ٕə��܀􀝡����������(�����(���չ�ѥ������͕1����쁱�������1��йɕ��ٔ��������쁑��յ��й������屔��ٕə��܀􀜜��(��������ٕ��1��ѕ��Ƞ��������������쁥�����хɝ�Ѐ��􁱉%�������͕1�������(�����յ��й���������	�%���������͔������ٕ��1��ѕ��Ƞ������������͕1���(�����յ��й���ٕ��1��ѕ��Ƞ���命ݸ��������쁥�����������͍���������͕1�������(�͍ɥ���(𽉽���(�ѵ��(
