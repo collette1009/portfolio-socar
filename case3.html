@@ -58,8 +58,17 @@
     .evidence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .evidence-item { display: flex; flex-direction: column; gap: 12px; }
     .evidence-label { font-size: 13px; font-weight: 700; color: var(--text-1); }
-    .evidence-image { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; min-height: 160px; display: flex; align-items: center; justify-content: center; }
+    .evidence-image { position: relative; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; min-height: 160px; display: flex; align-items: center; justify-content: center; }
     .evidence-image img { width: 100%; height: auto; display: block; }
+    .evidence-image.zoomable { cursor: zoom-in; }
+    .evidence-image.zoomable img { transition: opacity 0.2s; }
+    .evidence-image.zoomable:hover img { opacity: 0.88; }
+    .zoom-hint { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.55); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 9px; border-radius: 100px; letter-spacing: 0.03em; pointer-events: none; z-index: 1; }
+    .lb-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.22s; cursor: zoom-out; }
+    .lb-overlay.open { opacity: 1; pointer-events: auto; }
+    .lb-overlay img { max-width: min(92vw, 1300px); max-height: 92vh; width: auto; height: auto; border-radius: 10px; display: block; box-shadow: 0 12px 80px rgba(0,0,0,0.6); cursor: default; }
+    .lb-close { position: fixed; top: 20px; right: 28px; color: rgba(255,255,255,0.75); font-size: 32px; cursor: pointer; line-height: 1; background: none; border: none; font-weight: 300; transition: color 0.15s; }
+    .lb-close:hover { color: #fff; }
     .evidence-desc { font-size: 13px; color: var(--text-2); line-height: 1.8; }
     .insight-list { display: flex; flex-direction: column; gap: 16px; }
     .insight-item { display: flex; gap: 16px; padding: 22px 24px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); align-items: flex-start; }
@@ -290,6 +299,11 @@
   </div>
 </footer>
 
+<div class="lb-overlay" id="lb" role="dialog" aria-modal="true" aria-label="이미지 확대">
+  <button class="lb-close" id="lb-close" aria-label="닫기">&times;</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
 <script>
   const hd = document.getElementById('hd');
   window.addEventListener('scroll', () => { hd.classList.toggle('on', window.scrollY > 8); }, { passive: true });
@@ -301,6 +315,21 @@
     if (rect.top < window.innerHeight) { el.classList.add('show'); }
     else { io.observe(el); }
   });
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lb-img');
+  document.querySelectorAll('.evidence-image img').forEach(img => {
+    const wrap = img.closest('.evidence-image');
+    wrap.classList.add('zoomable');
+    const hint = document.createElement('span');
+    hint.className = 'zoom-hint';
+    hint.textContent = '확대';
+    wrap.appendChild(hint);
+    wrap.addEventListener('click', () => { lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  });
+  function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 </script>
 </body>
 </html>
