@@ -58,8 +58,17 @@
     .evidence-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .evidence-item { display: flex; flex-direction: column; gap: 12px; }
     .evidence-label { font-size: 13px; font-weight: 700; color: var(--text-1); }
-    .evidence-image { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; min-height: 160px; display: flex; align-items: center; justify-content: center; }
+    .evidence-image { position: relative; background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; min-height: 160px; display: flex; align-items: center; justify-content: center; }
     .evidence-image img { width: 100%; height: auto; display: block; }
+    .evidence-image.zoomable { cursor: zoom-in; }
+    .evidence-image.zoomable img { transition: opacity 0.2s; }
+    .evidence-image.zoomable:hover img { opacity: 0.88; }
+    .zoom-hint { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.55); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 9px; border-radius: 100px; letter-spacing: 0.03em; pointer-events: none; z-index: 1; }
+    .lb-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.22s; cursor: zoom-out; }
+    .lb-overlay.open { opacity: 1; pointer-events: auto; }
+    .lb-overlay img { max-width: min(92vw, 1300px); max-height: 92vh; width: auto; height: auto; border-radius: 10px; display: block; box-shadow: 0 12px 80px rgba(0,0,0,0.6); cursor: default; }
+    .lb-close { position: fixed; top: 20px; right: 28px; color: rgba(255,255,255,0.75); font-size: 32px; cursor: pointer; line-height: 1; background: none; border: none; font-weight: 300; transition: color 0.15s; }
+    .lb-close:hover { color: #fff; }
     .evidence-desc { font-size: 13px; color: var(--text-2); line-height: 1.8; }
     .insight-list { display: flex; flex-direction: column; gap: 16px; }
     .insight-item { display: flex; gap: 16px; padding: 22px 24px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); align-items: flex-start; }
@@ -176,7 +185,7 @@
         <div class="did-number">Step 03</div>
         <div class="did-title">생성형 AI를 실무 파트너로 — Chrome Extension · VBA · Apps Script 구현</div>
         <div class="did-desc">
-          <strong>Chrome Extension, VBA, Apps Script</strong>로 반복 업무를 줄이는 보조 자동화 도구를 구현했습니다. 생성형 AI를 로직 작성·수정·디버깅 보조에 활용해 <strong>비개발 환경에서도 실제 업무 적용 수준까지</strong> 개선했습니다. 최종 판단은 담당자가 확인하도록 남겨 데이터 예외 상황과 오입력 리스크를 통제했습니다.
+          <strong>Chrome Extension, VBA, Apps Script</strong>로 반복 업무를 줄이는 보조 자동화 도구를 구현했습니다. 생성형 AI를 로직 작성·수정·디버깅 보조에 활용해 <strong>비개발 환경에서도 실제 업무 적용 수 준까맀</strong> 개선했습니다. 최종 판단은 심성한 상황과 오입력 리스크를 통제했습니다.
         </div>
       </div>
     </div>
@@ -248,7 +257,7 @@
     <div class="insight-list">
       <div class="insight-item fi">
         <div class="insight-num">1</div>
-        <div class="insight-body"><strong>자동화의 핵심은 속도가 아니라 분류 실수를 구조적으로 막는 것입니다.</strong> 빠르게 처리하는 것보다 귀책 기준값이 항상 올바르게 입력되는 구조를 만드는 것이 훨씬 효과가 컸습니다. 쏘카의 사고 처리·보상 정산·파트너 협의에서도 기준값 오입력은 후속 흐름 전체를 꼬이게 합니다.</div>
+        <div class="insight-body"><strong>자동화의 핵심은 속도가 아니라 분류 실수를 구조적으로 막는 것입니다.</strong> 빠르게 처리하는지 것보다 귀책 기준값이 항상 올바르게 입력되는 구조를 만드는 것이 훨씬 효과가 컸습니다. 쏘카의 사고 처리·보상 정산·파트너 협의에서도 기준값 오입력은 후속 흐름 전체를 꼬이게 합니다.</div>
       </div>
       <div class="insight-item fi">
         <div class="insight-num">2</div>
@@ -256,7 +265,7 @@
       </div>
       <div class="insight-item fi">
         <div class="insight-num">3</div>
-        <div class="insight-body"><strong>비개발자도 생성형 AI를 활용하면 로직 설계와 도구 구현이 가능합니다.</strong> 도구의 한계가 아니라 어떻게 활용하는지가 핵심입니다. CS 운영기획이 AI를 직접 다룰 수 있을 때, 도구 도입을 기다리지 않고 필요한 것을 먼저 만들 수 있습니다.</div>
+        <div class="insight-body"><strong>비개발자도 생성형 AI를 활용하면 로직 설계와 도구 구현이 가능합니다.</strong> 도구의 한계가 아니라 어떻게 활용하는지가 핵심입니다. CS 운영기획이 AI를 직점 다룰 수 있을 때, 도구 도입을 기다리지 않고 필요한 것을 먼저 만들 수 있습니다.</div>
       </div>
     </div>
   </div>
@@ -285,6 +294,11 @@
   </div>
 </footer>
 
+<div class="lb-overlay" id="lb" role="dialog" aria-modal="true" aria-label="이미지 확대">
+  <button class="lb-close" id="lb-close" aria-label="닫기">&times;</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
 <script>
   const hd = document.getElementById('hd');
   window.addEventListener('scroll', () => { hd.classList.toggle('on', window.scrollY > 8); }, { passive: true });
@@ -296,6 +310,21 @@
     if (rect.top < window.innerHeight) { el.classList.add('show'); }
     else { io.observe(el); }
   });
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lb-img');
+  document.querySelectorAll('.evidence-image img').forEach(img => {
+    const wrap = img.closest('.evidence-image');
+    wrap.classList.add('zoomable');
+    const hint = document.createElement('span');
+    hint.className = 'zoom-hint';
+    hint.textContent = '확대';
+    wrap.appendChild(hint);
+    wrap.addEventListener('click', () => { lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  });
+  function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 </script>
 </body>
 </html>
