@@ -7,16 +7,13 @@ cd "$(dirname "$0")"
 echo "📁 현재 폴더: $(pwd)"
 echo ""
 
-# git 초기화 상태 확인 및 수정
-if [ ! -f ".git/objects" ]; then
-    echo "🔧 git 초기화 중..."
-    rm -rf .git
-    git init
-    git branch -m main
-fi
+# git 초기화
+echo "🔧 git 설정 중..."
+rm -rf .git
+git init
+git branch -m main
 
 # remote 설정
-git remote remove origin 2>/dev/null
 git remote add origin https://github.com/collette1009/portfolio-socar.git
 
 # 파일 추가
@@ -25,13 +22,17 @@ git add index.html case1.html case2.html case3.html case4.html img/
 
 # commit
 echo "💾 커밋 중..."
-git -c user.email="heeeun@choroc.com" -c user.name="collette1009" commit -m "Add portfolio socar files"
+git -c user.email="heeeun@choroc.com" -c user.name="collette1009" commit -m "NDA 처리: Slack 목업 이미지, 이력서 금액 익명화, case2 업데이트"
 
 # push
-echo "🚀 GitHub에 업로드 중... (GitHub 로그인 팝업이 뜨면 로그인해주세요)"
-git push -u origin main
+echo ""
+echo "🚀 GitHub에 업로드 중..."
+echo "   (GitHub 로그인 창이 뜨면 로그인해주세요)"
+echo ""
+git push -u origin main --force
 
 echo ""
-echo "✅ 완료! https://github.com/collette1009/portfolio-socar 에서 확인하세요"
+echo "✅ 완료! 아래 링크에서 확인하세요:"
+echo "   🌐 https://collette1009.github.io/portfolio-socar/"
 echo ""
 read -p "아무 키나 눌러서 종료..."
