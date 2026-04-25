@@ -26,7 +26,7 @@
     nav a { font-size: 14px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color var(--t); }
     nav a:hover { color: var(--charcoal); }
     .case-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
-    .case-hero-nav { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-2); text-decoration: none; margin-bottom: 32px; transition: color var(--t); }
+  2 .case-hero-nav { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-2); text-decoration: none; margin-bottom: 32px; transition: color var(--t); }
     .case-hero-nav:hover { color: var(--charcoal); }
     .case-hero-title { font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -0.03em; color: var(--charcoal); line-height: 1.2; margin-bottom: 20px; max-width: 720px; }
     .case-hero-summary { font-size: 16px; color: var(--text-2); line-height: 1.85; max-width: 720px; padding: 20px 24px; background: var(--bg-soft); border-left: 3px solid var(--charcoal); border-radius: var(--r-sm); margin-bottom: 24px; }
@@ -63,10 +63,22 @@
     .evidence-image { border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; line-height: 0; }
     .evidence-image img { width: 100%; height: auto; display: block; }
     .evidence-desc { font-size: 13px; color: var(--text-2); line-height: 1.8; }
-    /* Evidence 2-col: 좌(사진 2장) / 우(슬랙) */
-    .ev-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 28px; align-items: start; }
-    .ev-photos { display: flex; flex-direction: column; gap: 28px; }
-    @media (max-width: 800px) { .ev-layout { grid-template-columns: 1fr; } }
+    /* Evidence layout: 상단 1(좁게)·2(넓게) / 하단 3 작게 */
+    .ev-top { display: grid; grid-template-columns: 1fr 2fr; gap: 28px; align-items: start; }
+    .ev-bottom { margin-top: 28px; max-width: 48%; }
+    @media (max-width: 800px) { .ev-top { grid-template-columns: 1fr; } .ev-bottom { max-width: 100%; } }
+    /* Zoomable image hint */
+    .evidence-image { position: relative; }
+    .evidence-image.zoomable { cursor: zoom-in; }
+    .evidence-image.zoomable img { transition: opacity 0.2s; }
+    .evidence-image.zoomable:hover img { opacity: 0.88; }
+    .zoom-hint { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.55); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 9px; border-radius: 100px; letter-spacing: 0.03em; pointer-events: none; }
+    /* Lightbox */
+    .lb-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.22s; cursor: zoom-out; }
+    .lb-overlay.open { opacity: 1; pointer-events: auto; }
+    .lb-overlay img { max-width: min(92vw, 1300px); max-height: 92vh; width: auto; height: auto; border-radius: 10px; display: block; box-shadow: 0 12px 80px rgba(0,0,0,0.6); cursor: default; }
+    .lb-close { position: fixed; top: 20px; right: 28px; color: rgba(255,255,255,0.75); font-size: 32px; cursor: pointer; line-height: 1; background: none; border: none; font-weight: 300; transition: color 0.15s; }
+    .lb-close:hover { color: #fff; }
     .insight-list { display: flex; flex-direction: column; gap: 16px; }
     .insight-item { display: flex; gap: 16px; padding: 22px 24px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--r); align-items: flex-start; }
     .insight-num { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: var(--charcoal-a); font-size: 13px; font-weight: 700; color: var(--charcoal); flex-shrink: 0; }
@@ -138,7 +150,7 @@
     <div class="case-hero-summary">
       반복 문의는 처리 속도가 아니라 <strong>서비스 구조의 문제</strong>였습니다.<br>
       일 6~10건씩 들어오던 동일 문의를 전수 분류해 원인을 규명하고, 반년 전 거절됐던 UX 개선안을 데이터와 함께 CTO에게 재제안했습니다.<br>
-      <strong>제안 당일 구현·배포</strong>로 문의�  0건이 됐고, 이 구조는 유사 상품 전체로 확대 적용됐습니다.
+      <strong>제안 당일 구현·배포</strong>로 문의가 0건이 됐고, 이 구조는 유사 상품 전체로 확대 적용됐습니다.
     </div>
     <div class="case-hero-meta">
       <span class="meta-chip">VOC 분석 · Root Cause 규명</span>
@@ -156,7 +168,7 @@
   <div class="wrap">
     <p class="sec-eyebrow">Situation</p>
     <h2 class="sec-title">반복 문의는 고객의 문제가 아니라 구조의 문제였습니다</h2>
-    <div class="problem-list">
+  2 <div class="problem-list">
       <div class="problem-item fi">
         <div class="problem-title">주문 차단 이유를 고객이 알 수 없었습니다</div>
         배송 가능일이 다른 상품이 장바구니에 함께 담기면 주문이 차단되는 구조였습니다. 그런데 고객에게는 <strong>이유가 전혀 안내되지 않아 오류로 인식</strong>됐고, CS에 문의가 쏟아졌습니다.
@@ -243,106 +255,38 @@
     <p class="sec-eyebrow">Evidence</p>
     <h2 class="sec-title">제안부터 배포, 확대까지</h2>
 
-    <!-- 좌: 큰 사진 2장 / 우: 슬랙 대화 -->
-    <div class="ev-layout fi">
+    <!-- 상단: 사진 1·2 크게 나란히 -->
+    <div class="ev-top fi">
 
-      <!-- 좌 컬럼: 사진 2장 -->
-      <div class="ev-photos">
-
-        <!-- 사진 1: 장바구니 -->
-        <div class="evidence-item">
-          <div class="evidence-label">1. 배포 後 — 주의상품 이유 명시로 VOC 사전 차단</div>
-          <div class="evidence-image">
-            <img src="img/case1_ev2.png" alt="배포 후 주의상품 경고가 명확하게 표시된 장바구니 화면">
-          </div>
-          <div class="evidence-desc">"⚠️ 화요일에만 도착 가능한 상품이에요. 나누어 주문이 필요할 수 있어요." 두부·연두부 모두 이유가 명시되자 같은 구조의 반복 문의가 0건으로 수렴됐습니다.</div>
+      <!-- 사진 1: 장바구니 -->
+      <div class="evidence-item">
+        <div class="evidence-label">1. 배포 後 — 주의상품 이유 명시로 VOC 사전 차단</div>
+        <div class="evidence-image">
+          <img src="img/case1_ev2.png" alt="배포 후 주의상품 경고가 명확하게 표시된 장바구니 화면">
         </div>
-
-        <!-- 사진 3: 두부 확대 적용 -->
-        <div class="evidence-item">
-          <div class="evidence-label">3. 확대 적용 — 한끼한컵 두부 라인 전체 주의상품 태깅</div>
-          <div class="evidence-image">
-            <img src="img/case1_ev5.png" alt="두부 전 라인에 주의상품 안내가 적용된 화면">
-          </div>
-          <div class="evidence-desc">Day 2에 요청한 확대 태깅이 즉시 반영됐습니다. 이후 상품운영파트가 동일한 subtext 구조를 1+1·2+1 프로모션에도 자체 확산 적용했습니다.</div>
-        </div>
-
+        <div class="evidence-desc">"⚠️ 화요일에만 도착 가능한 상품이에요. 나누어 주문이 필요할 수 있어요." 두부·연두부 모두 이유가 명시되자 같은 구조의 반복 문의가 0건으로 수렴됐습니다.</div>
       </div>
 
-      <!-- 우 컬럼: 슬랙 대화 -->
+      <!-- 사진 2: 슬랙 대화 캡처 -->
       <div class="evidence-item">
         <div class="evidence-label">2. 제안 → CTO 즉시 수락 → 당일 배포 → 다음날 확대 요청</div>
-        <div class="slack-wrap">
-
-          <div class="slack-label">Day 0 — CTO 직접 제안</div>
-          <div class="slack-msg">
-            <div class="slack-av me">희</div>
-            <div class="slack-content">
-              <div class="slack-meta">
-                <span class="slack-name">오희은 · CS운영팀</span>
-                <span class="slack-time">수요일 오후 2:31</span>
-              </div>
-              <div class="slack-text">
-                CTO님, 장바구니 배송일 충돌 CS 건으로 여쭤봐도 될까요?<br>
-                동일 유형 문의가 <strong>일 6~10건</strong>씩 들어오는데, 이유 안내가 없어 고객이 오류로 인식하는 구조입니다.<br><br>
-                모든 케이스 처리가 어렵다면, API로 판단 가능한 상품에만 <strong>'주의상품' 태깅</strong>해서 장바구니에서 문구만 다르게 표시하는 MVP로 시작하면 어떨까요?<br>
-                예: <span class="s-quote">⚠️ 화요일에만 도착 가능한 상품이에요. 나누어 주문이 필요할 수 있어요.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="slack-msg">
-            <div class="slack-av cto">C</div>
-            <div class="slack-content">
-              <div class="slack-meta">
-                <span class="slack-name">CTO</span>
-                <span class="slack-time">수요일 오후 2:33</span>
-              </div>
-              <div class="slack-text">
-                <strong>주의상품 방식으로 해볼게요</strong> @개발팀
-              </div>
-            </div>
-          </div>
-
-          <div class="slack-div"></div>
-
-          <div class="slack-label">Day 1 — 배포 직후 품질 개선 제안</div>
-          <div class="slack-msg">
-            <div class="slack-av me">희</div>
-            <div class="slack-content">
-              <div class="slack-meta">
-                <span class="slack-name">오희은 · CS운영팀</span>
-                <span class="slack-time">목요일 오후 7:38</span>
-              </div>
-              <div class="slack-text">
-                웹에서 줄바꿈이 안 되는 이슈도 있으니, 문구를 한 문장으로 바꾸면 어떨까요?<br>
-                <span class="s-quote">화요일에만 도착 가능한 상품이에요. 나누어 주문이 필요할 수 있어요.</span><br>
-                이러면 줄바꿈 없이도 자연스럽게 읽혀서 웹/앱 둘 다 깔끔할 것 같아요. 👍
-              </div>
-            </div>
-          </div>
-
-          <div class="slack-div"></div>
-
-          <div class="slack-label">Day 2 — 유사 상품 확대 요청</div>
-          <div class="slack-msg">
-            <div class="slack-av me">희</div>
-            <div class="slack-content">
-              <div class="slack-meta">
-                <span class="slack-name">오희은 · CS운영팀</span>
-                <span class="slack-time">금요일 오전 11:22</span>
-              </div>
-              <div class="slack-text">
-                ○○ ○○ 님 벌써 반영해주셨군요! 감사합니다 👋<br>
-                한끼한컵 두부 85g(WG029828)도 동일하게 화요일 도착 상품이라 같이 주의상품 태깅 부탁드려도 될까요?
-              </div>
-            </div>
-          </div>
-
+        <div class="evidence-image">
+          <img src="img/case1_ev4.png" alt="제안부터 CTO 수락·당일 배포까지의 슬랙 대화 캡처">
         </div>
         <div class="evidence-desc">CTO에게 직접 데이터 기반 MVP를 제안하자 2분 만에 수락·당일 배포됐습니다. 배포 직후에도 품질 이슈를 직접 발견해 수정 제안하고, 다음날 유사 상품 확장 태깅을 요청했습니다.</div>
       </div>
 
+    </div>
+
+    <!-- 하단: 사진 3 작게 -->
+    <div class="ev-bottom fi">
+      <div class="evidence-item">
+        <div class="evidence-label">3. 확대 적용 — 한끼한컵 두부 라인 전체 주의상품 태깅</div>
+        <div class="evidence-image">
+          <img src="img/case1_ev5.png" alt="두부 전 라인에 주의상품 안내가 적용된 화면">
+        </div>
+        <div class="evidence-desc">Day 2에 요청한 확대 태깅이 즉시 반영됐습니다. 이후 상품운영파트가 동일한 subtext 구조를 1+1·2+1 프로모션에도 자체 확산 적용했습니다.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -354,7 +298,7 @@
   <div class="wrap">
     <p class="sec-eyebrow">Insight</p>
     <h2 class="sec-title">이 경험에서 얻은 것</h2>
-    <div class="insight-list">
+ 2  <div class="insight-list">
       <div class="insight-item fi">
         <div class="insight-num">1</div>
         <div class="insight-body"><strong>반복 문의는 처리 대상이 아니라 분석 대상입니다.</strong> 빠르게 응대하는 것이 아니라, 왜 반복되는지를 데이터로 규명했을 때 비로소 문의가 사라집니다. 쏘카의 예약·결제·반납·사고 문의에서도 같은 원리가 작동합니다 — 패턴이 보이면 구조를 바꿔야 합니다.</div>
@@ -365,7 +309,7 @@
       </div>
       <div class="insight-item fi">
         <div class="insight-num">3</div>
-        <div class="insight-body"><strong>기술 제약은 포기 이유가 아니라 MVP를 설계하는 조건입니다.</strong> 모든 예외를 처리하려 하지 않고, 제약 안에서 가장 작은 실행 단위를 설계했을 때 개발팀이 움직였습니다. 운영기획이 기술 제약을 이해하면 실행까지의 거리�  짧아집니다.</div>
+        <div class="insight-body"><strong>기술 제약은 포기 이유가 아니라 MVP를 설계하는 조건입니다.</strong> 모든 예외를 처리하려 하지 않고, 제약 안에서 가장 작은 실행 단위를 설계했을 때 개발팀이 움직였습니다. 운영기획이 기술 제약을 이해하면 실행까지의 거리가 짧아집니다.</div>
       </div>
     </div>
   </div>
@@ -391,6 +335,11 @@
   </div>
 </footer>
 
+<div class="lb-overlay" id="lb" role="dialog" aria-modal="true" aria-label="이미지 확대">
+  <button class="lb-close" id="lb-close" aria-label="닫기">&times;</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
 <script>
   const hd = document.getElementById('hd');
   window.addEventListener('scroll', () => { hd.classList.toggle('on', window.scrollY > 8); }, { passive: true });
@@ -402,6 +351,28 @@
     if (rect.top < window.innerHeight) { el.classList.add('show'); }
     else { io.observe(el); }
   });
+
+  // Lightbox
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lb-img');
+  document.querySelectorAll('.evidence-image img').forEach(img => {
+    const wrap = img.closest('.evidence-image');
+    wrap.classList.add('zoomable');
+    const hint = document.createElement('span');
+    hint.className = 'zoom-hint';
+    hint.textContent = '확대';
+    wrap.appendChild(hint);
+    wrap.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+  lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
 </script>
 </body>
 </html>
